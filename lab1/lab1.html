@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Data Visualisation Exercise 1" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="author" content="Your name here" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Task 1.1 HTML and CSS Demo Page</title>
+    <!-- Insert description of exercise -->
+
+    <style>
+        body {
+            width: 60%;
+            height: 50%;
+            margin: 2% 20% 25% 20%;
+            background-color: #D9AFD9;
+            background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        .point{
+            text-align: center;
+        }
+
+        ul.myUL {
+            display: inline-block;
+            text-align: left;
+        }
+
+        ul li {
+            list-style: square;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-row {
+            display: flex;
+            gap: var(--gap, 10px);
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .imgstyle {
+            --border: 15px;
+            --gap: 12px;
+            --color: #FA6900;
+            width: 200px;
+            aspect-ratio: 1;
+            box-sizing: border-box;
+            border-radius: 50%;
+            margin: 40px;
+            cursor: pointer;
+            padding: calc(var(--border) + var(--gap));
+            
+            --angle: 90deg;
+            background:
+                radial-gradient(farthest-side,var(--color) 97%,#0000 101%) 85.35% 85.35%,
+                conic-gradient(from calc(180deg - var(--angle)/2),#0000 var(--angle),var(--color) 0),
+                radial-gradient(farthest-side,var(--color) 97%,#0000 101%) 14.65% 85.35%;
+            background-size: var(--border) var(--border),auto;
+            background-repeat: no-repeat;
+            
+            -webkit-mask:
+                radial-gradient(farthest-side, 
+                #000  calc(99%  - calc(var(--border) + var(--gap))),
+                #0000 calc(100% - calc(var(--border) + var(--gap))) 
+                    calc(99%  - var(--border)), 
+                #000  calc(100% - var(--border)));
+                    mask:
+                radial-gradient(farthest-side, 
+                #000  calc(99%  - calc(var(--border) + var(--gap))),
+                #0000 calc(100% - calc(var(--border) + var(--gap))) 
+                    calc(99%  - var(--border)), 
+                #000  calc(100% - var(--border)));
+            transition: --angle .4s,--gap .4s;
+        }
+        .imgstyle:hover {
+        --angle: 0deg;
+        --gap: 5px;
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="/homepage.html">Home Page</a>
+        <a href="#" onclick="showSection('lab1')">Lab 1.1</a>
+        <a href="#" onclick="showSection('lab2')">Lab 1.2</a>
+        <a href="#" onclick="showSection('lab3')">Lab 1.3</a>
+    </div>
+
+    <br>
+    <h1>Pets and the Pandemic</h1>
+    <h5>A report from Animal Medicines Australia (AMA) has found that many Australians took the opportunity to introduce a pet into their household during the pandemic. Their survey indicated that there was a significant increase in the percent of households taking in a new dog, fish or bird. Their research also indicated that pets had a number of positive influences on their lives such as:</h5>
+    <br>
+
+    <div id="lab1" class="content-section active">
+        <div class="image-row">
+            <img class="imgstyle" src="cat.jpg">
+            <img class="imgstyle" src="dog.png" style="--color:#0B486B">
+            <img class="imgstyle" src="fish.jpg" style="--color:#BD1550">
+        </div>
+
+
+        <div class="point">
+            <ul class="myUL">
+                <li>companionship</li>
+                <li>better mental health</li>
+                <li>joy and happiness.</li>
+            </ul>
+        </div>
+
+        <div>With the increase in pet ownership the AMA are encouraging policy makers to consider the needs of companion animals and their owners when considering rental, strata and body corporate regulations are well as accepting animals in public places and transport. </div>
+        <br>
+        <img src="pet_ownership_in_australia_table.png" alt="Girl in a jacket">
+        <br>
+
+        <div>Fig 1. Comparison of Pet Ownership in 2019 and 2021. Data Source: <a href="https://animalmedicinesaustralia.org.au/wp-content/uploads/2021/08/AMAU005-PATP-Report21_v1.41_WEB.pdf" target="_blank">Animal Medicines Australia Report</a></div>
+    </div>
+
+    <div id="lab2" class="content-section">
+        <div class="button-container">
+            <button type="button" class="btn btn-primary" onclick='changeImage("pet2019.png")'>2019</button>
+            <button type="button" class="btn btn-primary" onclick='changeImage("pet2021.png")'>2021</button>
+            <button type="button" class="btn btn-success" onclick='changeImage("mix.png")'>Both</button>
+        </div>
+        <br>
+        <div id="image-container">
+            <img id="main-image" src="pet2019.png" alt="Image" />
+        </div>
+    </div>
+    
+    <div id="lab3" class="content-section">
+        <svg width="100%" height="100" style="background-color: slategray">
+            <g transform="translate(300,0)">
+                <circle cx="30" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+                <rect x="100" y="10" width="80" height="80" stroke="green" stroke-width="4" fill="yellow" />
+                <ellipse cx="250" cy="50" rx="40" ry="20" stroke="green" stroke-width="4" fill="yellow" />
+                <line x1="-50" y1="50" x2="350" y2="50" stroke="black" stroke-width="5" />
+            </g>
+        </svg>
+
+        <svg width="100%" height="300" xmlns="http://www.w3.org/2000/svg" style="background-color: slategray">
+            <!-- Define the bars -->
+            <rect x="300" y="50" width="40" height="200" fill="#00008B" />
+            <rect x="350" y="100" width="40" height="150" fill="#00008B" />
+            <rect x="400" y="150" width="40" height="100" fill="#00008B" />
+            <rect x="450" y="180" width="40" height="70" fill="#00008B" />
+            <rect x="500" y="220" width="40" height="30" fill="#00008B" />
+            <rect x="550" y="240" width="40" height="10" fill="#00008B" />
+        </svg>
+    </div>
+
+    <footer><b>COS30045 Data Visualisation</b></footer>
+    <script>
+        function showSection(sectionId) {
+            // Hide all sections
+            var sections = document.querySelectorAll('.content-section');
+            sections.forEach(function (section) {
+                section.classList.remove('active');
+            });
+
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            //jquery method
+            // $('#' + sectionId).addClass('active');
+        }
+
+        function changeImage(imageSrc) {
+            const imgElement = document.getElementById('main-image');
+            imgElement.src = imageSrc;
+        }
+    </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
