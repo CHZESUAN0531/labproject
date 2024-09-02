@@ -1,5 +1,20 @@
 function init(){
 
+
+    let currentUrl = window.location.href;
+    var homeLink = document.getElementById("homeLink");
+
+    console.log(currentUrl);
+
+    if (currentUrl === "https://chzesuan0531.github.io/labproject/lab2/lab2_4.html") {
+        homeLink.href = "/labproject/homepage.html";
+    } else {
+        homeLink.href = "/homepage.html";
+    }
+
+
+
+
     console.log('run');
     d3.csv("Task_2.4_data.csv").then(function(data){
 
