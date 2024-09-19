@@ -224,6 +224,8 @@
 
             svg.selectAll("rect")
                 .data(dataset)
+                .transition(1000) 
+                .delay(100)
                 .attr("y", function(d) {
                     return yScale(d);
                 })
