@@ -155,16 +155,29 @@
             var w = 1000;
             var h = 800;
 
+            // var dataset = [
+            //     [5, 20],
+            //     [25, 67],
+            //     [85, 21],
+            //     [220, 88],
+            //     [250, 50],
+            //     [330, 95],
+            //     [410, 12],
+            //     [500, 90],
+            //     [475, 44]
+            //     ];
+
             var dataset = [
-                [5, 20],
-                [25, 67],
-                [85, 21],
-                [220, 88],
-                [250, 50],
-                [330, 95],
-                [410, 12],
-                [500, 90],
-                [475, 44]
+                [5, 8],
+                [3, 5],
+                [5, 17],
+                [6, 6],
+                [6, 12],
+                [7, 20],
+                [8, 22],
+                [10, 11],
+                [5, 12],
+                [5, 16]
                 ];
 
                 // Define scales
@@ -225,6 +238,27 @@
                 svg.append("g")
                 .attr("transform", `translate(${padding}, 0)`)  // Position the axis on the left
                 .call(yAxis);
+
+
+            // Add labels to the bars
+            // Add X-axis label
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("x", w / 2)
+                .attr("y", h - 10)  // Slightly below the X-axis
+                .text("Age (years)")
+                .attr("font-size", "14px")
+                .attr("fill", "black");
+
+            // Add Y-axis label
+            svg.append("text")
+                .attr("text-anchor", "middle")
+                .attr("transform", "rotate(-90)")
+                .attr("x", -h / 3)
+                .attr("y", 25)  // Slightly to the left of the Y-axis
+                .text("Tree Height (m)")
+                .attr("font-size", "14px")
+                .attr("fill", "black");
 
 
         </script>
