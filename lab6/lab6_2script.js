@@ -83,6 +83,28 @@
             .attr("transform", `translate(${padding -20}, 0)`)
             .call(yAxis);
 
+
+        // Add labels to the bars
+        // Add X-axis label
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("x", w / 2)
+            .attr("y", h + 40)  // Slightly below the X-axis
+            .text("X Axis")
+            .attr("font-size", "14px")
+            .attr("fill", "black");
+
+        // Add Y-axis label
+        svg.append("text")
+            .attr("text-anchor", "middle")
+            .attr("transform", "rotate(-90)")
+            .attr("x", -h / 3)
+            .attr("y", -40)  // Slightly to the left of the Y-axis
+            .text("Y Axis")
+            .attr("font-size", "14px")
+            .attr("fill", "black");
+            
+
         // Button click event to update data
         d3.select("#add").on("click", function() {
             // Generate new random dataset
