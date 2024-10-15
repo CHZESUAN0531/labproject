@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Data Visualisation Exercise 1" />
+    <meta name="keywords" content="HTML, CSS" />
+    <meta name="author" content="Your name here" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>Task 8.1 HTML and CSS Demo Page</title>
+    <!-- Insert description of exercise -->
+
+    <style>
+        body {
+            width: 60%;
+            height: 50%;
+            margin: 2% 20% 50% 20%;
+            background-color: #D9AFD9;
+            background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+        }
+
+        h1{
+            text-align: center;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        .point{
+            text-align: center;
+        }
+
+        ul.myUL {
+            display: inline-block;
+            text-align: left;
+        }
+
+        ul li {
+            list-style: square;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 90%;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image-row {
+            display: flex;
+            gap: var(--gap, 10px);
+            align-items: center;
+        }
+
+
+        .imgstyle {
+            --border: 15px;
+            --gap: 12px;
+            --color: #FA6900;
+            width: 200px;
+            aspect-ratio: 1;
+            box-sizing: border-box;
+            border-radius: 50%;
+            margin: 40px;
+            cursor: pointer;
+            padding: calc(var(--border) + var(--gap));
+            
+            --angle: 90deg;
+            background:
+                radial-gradient(farthest-side,var(--color) 97%,#0000 101%) 85.35% 85.35%,
+                conic-gradient(from calc(180deg - var(--angle)/2),#0000 var(--angle),var(--color) 0),
+                radial-gradient(farthest-side,var(--color) 97%,#0000 101%) 14.65% 85.35%;
+            background-size: var(--border) var(--border),auto;
+            background-repeat: no-repeat;
+            
+            -webkit-mask:
+                radial-gradient(farthest-side, 
+                #000  calc(99%  - calc(var(--border) + var(--gap))),
+                #0000 calc(100% - calc(var(--border) + var(--gap))) 
+                    calc(99%  - var(--border)), 
+                #000  calc(100% - var(--border)));
+                    mask:
+                radial-gradient(farthest-side, 
+                #000  calc(99%  - calc(var(--border) + var(--gap))),
+                #0000 calc(100% - calc(var(--border) + var(--gap))) 
+                    calc(99%  - var(--border)), 
+                #000  calc(100% - var(--border)));
+            transition: --angle .4s,--gap .4s;
+        }
+        .imgstyle:hover {
+        --angle: 0deg;
+        --gap: 5px;
+        }
+
+        .line {
+            fill: none;
+            stroke: rgb(0, 0, 0);
+            stroke-width: 0.5;
+        }
+
+
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a id="homeLink" href="">Home Page</a>
+        <a href="lab8_1.html" >Lab 8.1</a>
+        <a href="lab8_2.html" >Lab 8.2</a>
+    </div>
+
+    <br>
+    <h1>The D3 Lab 8.1 Journey start here...</h1>
+    <br>
+
+
+
+    <div id="mapchart" class="content-section active" style="text-align: center;">
+
+    </div>
+
+
+    
+
+
+    <footer><b>COS30045 Data Visualisation</b></footer>
+    <script>
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="lab8_1sript.js"></script>
+    <script>
+        $(document).ready(function() {
+            let currentUrl = window.location.href;
+            var homeLink = document.getElementById("homeLink");
+
+            console.log(currentUrl);
+
+            if (currentUrl === "https://chzesuan0531.github.io/labproject/lab5/lab8_1.html") {
+                homeLink.href = "/labproject/homepage.html";
+            } else {
+                homeLink.href = "/homepage.html";
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
