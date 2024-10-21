@@ -82,7 +82,8 @@ function MapChart() {
             .attr("d", path)
             .attr("stroke", "#333") // Improved stroke for boundaries
             .attr("fill", function(d, i) {
-                return color(i % 10); // Fill with color based on index or property
+                d.originalColor = color(i % 10); // Store the original color in the data object
+                return d.originalColor; // Use this original color for the fill
             })
             .on("mouseover", function(event, d) {
                 d3.select(this)
@@ -90,18 +91,14 @@ function MapChart() {
             })
             .on("mouseout", function(event, d) {
                 d3.select(this)
-                  .attr("fill", function(d, i) {
-                      return color(i % 10); // Reset color on mouse out
-                  });
+                  .attr("fill", d.originalColor); // Reset color to the original on mouse out
             });
 
     }).catch(function(error) {
         console.error("Error loading the GeoJSON data: ", error); // Error handling
-    });
-
+    }).then(function() {
         // Load the city data and add circles for towns and cities
-        d3.csv("VIC_city.csv").then(function(cityData) {
-            // Add circles for each city/town
+        return d3.csv("VIC_city.csv").then(function(cityData) {
             svg.selectAll("circle")
                 .data(cityData)
                 .enter()
@@ -131,7 +128,8 @@ function MapChart() {
                 .text(function(d) {
                     return d.place; // Display city/town name
                 });
-        }).catch(function(error) {
-            console.error("Error loading the city data:", error);
         });
+    }).catch(function(error) {
+        console.error("Error loading data:", error);
+    });
 }

@@ -34,25 +34,24 @@ function MapChart() {
     d3.json("LGA_VIC.json").then(function(json) {
         // Bind data and create one path per GeoJSON feature
         svg.selectAll("path")
-            .data(json.features)
-            .enter()
-            .append("path")
-            .attr("d", path)
-            .attr("stroke", "#333") // Improved stroke for boundaries
-            .attr("fill", function(d, i) {
-                return color(i % 10); // Fill with color based on index or property
-            })
-            .on("mouseover", function(event, d) {
-                d3.select(this)
-                  .attr("fill", "#ffcc00"); // Highlight on hover
-            })
-            .on("mouseout", function(event, d) {
-                d3.select(this)
-                  .attr("fill", function(d, i) {
-                      return color(i % 10); // Reset color on mouse out
-                  });
-            });
-
+        .data(json.features)
+        .enter()
+        .append("path")
+        .attr("d", path)
+        .attr("stroke", "#333") // Improved stroke for boundaries
+        .attr("fill", function(d, i) {
+            d.originalColor = color(i % 10); // Store the original color in the data object
+            return d.originalColor; // Use this original color for the fill
+        })
+        .on("mouseover", function(event, d) {
+            d3.select(this)
+              .attr("fill", "#ffcc00"); // Highlight on hover
+        })
+        .on("mouseout", function(event, d) {
+            d3.select(this)
+              .attr("fill", d.originalColor); // Reset color to the original on mouse out
+        });
+ 
     }).catch(function(error) {
         console.error("Error loading the GeoJSON data: ", error); // Error handling
     });
