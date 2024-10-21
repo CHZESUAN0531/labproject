@@ -51,7 +51,6 @@ function MapChart() {
             d3.select(this)
               .attr("fill", d.originalColor); // Reset color to the original on mouse out
         });
-
     }).catch(function(error) {
         console.error("Error loading the GeoJSON data: ", error); // Error handling
     });
